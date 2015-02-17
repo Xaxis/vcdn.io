@@ -10,7 +10,7 @@ module.exports = function(grunt) {
      * Project details
      */
     project: {
-      public: '/',
+      public: '/app/',
       sass: '<%= project.public %>assets/sass',
       css: [
         '<%= project.public %>css/style.scss'
@@ -46,9 +46,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: 'assets/sass',
+            cwd: 'app/assets/sass',
             src: ['**/index.scss'],
-            dest: 'assets/css',
+            dest: 'app/assets/css',
             ext: '.css'
           }
         ]
@@ -61,9 +61,9 @@ module.exports = function(grunt) {
         files: [
           {
             expand: true,
-            cwd: 'assets/sass',
+            cwd: 'app/assets/sass',
             src: ['**/index.scss'],
-            dest: 'assets/css',
+            dest: 'app/assets/css',
             ext: '.css'
           }
         ]
@@ -96,7 +96,7 @@ module.exports = function(grunt) {
         }
       },
       sass: {
-        files: 'assets/sass/*.{scss,sass}',
+        files: 'app/assets/sass/*.{scss,sass}',
         tasks: ['sass:dev']
       }
     }

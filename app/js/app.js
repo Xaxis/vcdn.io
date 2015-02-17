@@ -1,5 +1,13 @@
-(function( $, _, B ) {
-  $(document).ready(function() {
+/**
+ * Define the app as a module.
+ */
+define([
+  'jquery',
+  'jquery.eye',
+  'underscore',
+  'backbone'
+], function( $, $_eye, _, Backbone ) {
+  var App = function() {
 
     /*
      * WATCH/HANDLE:
@@ -17,7 +25,7 @@
      * Define page content collection
      */
     var SiteContentModel = Backbone.Collection.extend({
-      url: 'app/templates/homepage',
+      url: 'templates/homepage',
 
       initialize: function() {
         this.deferred = this.fetch();
@@ -52,9 +60,9 @@
           container     = $('#site-content'),
           duration      = 300,
 
-          /*
-           * Method for toggling the content loader overlay
-           */
+        /*
+         * Method for toggling the content loader overlay
+         */
           toggleLoader  = function( callback ) {
             var state = loader.hasClass('active') ? 1 : 0;
 
@@ -78,19 +86,20 @@
             );
           },
 
-          /*
-           * Method for loading the content of the next page
-           */
+        /*
+         * Method for loading the content of the next page
+         */
           getContent  = function() {
 
             // Animate in loader
             toggleLoader(function() {
 
               // Load/animate content
-              $.get("app/templates/" + _this.template + ".html", function(template) {
+              $.get("templates/" + _this.template + ".html", function(template) {
                 $(_this.el).append('<div id="site-content"></div>');
                 $('#site-content')
                   .html(template)
+                  .stop()
                   .animate(
                   { opacity: 1 },
                   {
@@ -138,5 +147,11 @@
     // Initialize homepage on load
     var siteContentView = new SiteContentView();
 
-  });
-}( jQuery, _, Backbone ));
+    return {};
+  };
+
+  App.prototype = {
+  };
+
+  return App;
+});
