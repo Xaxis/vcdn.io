@@ -24,7 +24,7 @@
     "font-awesome": "^4.3.0",
     "jquery": "^2.1.3",
     "jquery.eye": "^1.2.0",
-    "lodash": "^2.4.1",
+    "lodash": "^4.17.15",
     "requirejs": "latest",
     "socket.io": "^1.1.0",
     "underscore": "^1.7.0"
